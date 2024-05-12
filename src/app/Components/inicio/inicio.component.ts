@@ -19,7 +19,7 @@ import { Router } from '@angular/router';
 export class InicioComponent implements OnInit{
   private paciente_service = inject(PacienteService);
   public lista_pacientes:Paciente[] = [];
-  public displayColumns:string[] = ['rut', 'nombre', 'edad', 'sexo'];
+  public displayColumns:string[] = ['rut', 'nombre', 'edad', 'sexo', 'accion'];
 
   getPacientes(){
     this.paciente_service.get_all().subscribe({
@@ -39,4 +39,8 @@ export class InicioComponent implements OnInit{
   }
 
   constructor(private router:Router){}
+
+  ver_mas(obj:Paciente){    
+    this.router.navigate(['/registro/detalle', obj._id])
+  }
 }
