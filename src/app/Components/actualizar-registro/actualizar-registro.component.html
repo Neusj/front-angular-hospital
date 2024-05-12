@@ -1,0 +1,54 @@
+<div class="container">
+    <div>
+        <h1>Actializar Paciente</h1>
+    </div>
+    <form class="example-form" [formGroup]="formPaciente">
+        <div *ngIf="formPaciente">
+            <mat-form-field class="example-full-width m-2" required>
+                <mat-label>Rut</mat-label>
+                <input matInput formControlName="rut">
+                <mat-error *ngIf="formPaciente.get('rut')?.invalid && formPaciente.get('rut')?.touched">Rut es obligatorio</mat-error>
+            </mat-form-field>
+          
+            <mat-form-field class="example-full-width m-2" required>
+                <mat-label>Nombre</mat-label>
+                <input matInput formControlName="nombre">
+                <mat-error *ngIf="formPaciente.get('nombre')?.invalid && formPaciente.get('nombre')?.touched">Nombre es obligatorio</mat-error>
+            </mat-form-field>
+          
+            <mat-form-field class="example-full-width m-2" required>
+                <mat-label>Edad</mat-label>
+                <input matInput type="number" formControlName="edad">
+                <mat-error *ngIf="formPaciente.get('edad')?.invalid && formPaciente.get('edad')?.touched">Edad es obligatoria</mat-error>
+            </mat-form-field>
+          
+            <mat-form-field class="example-full-width m-2" required>
+                <mat-label>Sexo</mat-label>
+                <mat-select formControlName="sexo">
+                    <mat-option value="F">Femenino</mat-option>
+                    <mat-option value="M">Masculino</mat-option>
+                </mat-select>
+                <mat-error *ngIf="formPaciente.get('sexo')?.invalid && formPaciente.get('sexo')?.touched">Sexo es obligatorio</mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field class="example-full-width m-2" required>
+                <mat-label>Enfermedad</mat-label>
+                <input matInput formControlName="enfermedad">
+                <mat-error *ngIf="formPaciente.get('enfermedad')?.invalid && formPaciente.get('enfermedad')?.touched">Enfermedad es obligatoria</mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-width m-2" required>
+                <mat-label>Foto</mat-label>
+                <input matInput formControlName="fotoPersonal">
+            </mat-form-field>
+            <mat-label>Revisado</mat-label>
+            <mat-checkbox required class="example-full-width m-2 bg-dark-subtle" formControlName="revisado"></mat-checkbox>
+            <mat-error *ngIf="formPaciente.get('revisado')?.invalid && formPaciente.get('revisado')?.touched">Revisado es obligatorio</mat-error>
+        </div>
+
+        <div>
+            <button mat-flat-button color="primary" (click)="save()">Guardar</button>
+            <button class="ms-2" mat-flat-button color="warn" (click)="volver()">Inicio</button>
+        </div>
+    </form>
+</div>
